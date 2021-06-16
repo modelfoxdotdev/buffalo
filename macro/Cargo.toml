@@ -1,6 +1,6 @@
 [package]
 authors = ["Tangram <root@tangram.xyz"]
-description = "Serialization library for rust."
+description = "Serialization library for Rust."
 documentation = "https://docs.rs/buffalo"
 edition = "2018"
 homepage = "https://github.com/tangramxyz/buffalo"

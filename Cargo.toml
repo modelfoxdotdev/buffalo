@@ -5,7 +5,7 @@ members = [
 
 [package]
 authors = ["Tangram <root@tangram.xyz"]
-description = "Serialization library for rust."
+description = "Serialization library for Rust."
 documentation = "https://docs.rs/buffalo"
 edition = "2018"
 homepage = "https://github.com/tangramxyz/buffalo"
@@ -23,7 +23,7 @@ ndarray_0_15 = ["ndarray"]
 bitvec_0_19 = ["bitvec"]
 
 [dependencies]
-bitvec = {version = "0.19", optional = true }
+bitvec = { version = "0.19", optional = true }
 derive_deref = "1"
 ndarray = { version = "0.15", optional = true }
 num = "0.4"
