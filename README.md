@@ -4,7 +4,7 @@
 
 # Buffalo
 
-This crate is documented using rustdoc. View the docs for the most recent version at https://docs.rs/buffalo or run `cargo doc -p buffalo --open` in the root of this repository.
+Buffalo is a binary serialization that gives you ultimate control.
 
 ## Example
 
