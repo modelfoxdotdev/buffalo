@@ -4,7 +4,7 @@
 
 # Buffalo
 
-Buffalo is a binary serialization that gives you ultimate control.
+Buffalo is a binary serialization format that gives you ultimate control.
 
 ## Example
 
