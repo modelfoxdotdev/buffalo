@@ -4,15 +4,15 @@ members = [
 ]
 
 [package]
-authors = ["Tangram <root@tangram.xyz"]
+authors = ["Tangram <root@tangram.dev"]
 description = "Serialization library for Rust."
 documentation = "https://docs.rs/buffalo"
 edition = "2018"
-homepage = "https://github.com/tangramxyz/buffalo"
+homepage = "https://github.com/tangramdotdev/buffalo"
 license = "MIT"
 name = "buffalo"
 publish = true
-repository = "https://github.com/tangramxyz/buffalo"
+repository = "https://github.com/tangramdotdev/buffalo"
 version = "0.1.0"
 
 [lib]
