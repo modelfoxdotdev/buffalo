@@ -32,7 +32,7 @@ impl Write for BitVec<Lsb0, u8> {
 		let position = writer.position();
 		let bit_len: PointerType = self.len().try_into().unwrap();
 		writer.write(&bit_len);
-		writer.write_raw::<[u8]>(self.as_slice());
+		writer.write_raw::<[u8]>(self.as_raw_slice());
 		position
 	}
 }

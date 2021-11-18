@@ -1,6 +1,6 @@
 use std::convert::TryInto;
 
-#[cfg(feature = "bitvec_0_19")]
+#[cfg(feature = "bitvec_0_22")]
 mod bitvec;
 mod dynamic_struct_index_reader;
 mod dynamic_struct_index_writer;
