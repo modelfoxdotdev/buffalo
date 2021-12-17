@@ -13,6 +13,7 @@ license = "MIT"
 name = "buffalo"
 publish = true
 repository = "https://github.com/tangramdotdev/buffalo"
+rust-version = "1.57"
 version = "0.2.0"
 
 [lib]
