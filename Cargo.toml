@@ -7,7 +7,7 @@ members = [
 authors = ["Tangram <root@tangram.dev"]
 description = "Serialization library for Rust."
 documentation = "https://docs.rs/buffalo"
-edition = "2018"
+edition = "2021"
 homepage = "https://github.com/tangramdotdev/buffalo"
 license = "MIT"
 name = "buffalo"
@@ -27,4 +27,5 @@ bitvec = { version = "0.22", optional = true }
 derive_deref = "1"
 ndarray = { version = "0.15", optional = true }
 num = "0.4"
+#num-bigint-dig = {version = "0.7", features = [ "i128" ] }
 buffalo_macro = { version = "0.1", path = "macro" }
