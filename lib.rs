@@ -40,10 +40,11 @@ where
 	let position = bytes.len() - std::mem::size_of::<PointerType>();
 	let position = position.try_into().unwrap();
 	let position = Position::new(position);
-	<Pointer<T>>::read(&bytes, position)
+	<Pointer<T>>::read(bytes, position)
 }
 
 #[cfg(test)]
+#[allow(unused)]
 mod test {
 	use crate as buffalo;
 

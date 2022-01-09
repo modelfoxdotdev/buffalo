@@ -42,7 +42,7 @@ fn enum_read(
 	input: &syn::DeriveInput,
 	data: &syn::DataEnum,
 ) -> syn::Result<proc_macro2::TokenStream> {
-	let attributes = enum_attributes(&input)?;
+	let attributes = enum_attributes(input)?;
 	match attributes.size {
 		EnumSize::Dynamic => dynamic_enum_read(input, &attributes, data),
 		EnumSize::Static => static_enum_read(input, &attributes, data),
@@ -84,7 +84,7 @@ fn dynamic_struct_read(
 		.map(|field| {
 			let field_ident = field.ident.as_ref().unwrap();
 			let field_ty = &field.ty;
-			let field_attributes = field_attributes(&field)?;
+			let field_attributes = field_attributes(field)?;
 			let field_id = match index_type {
 			    StructIndexType::U8 => FieldIdValue::U8(field_attributes.id.try_into().unwrap()),
 			    StructIndexType::U16 => FieldIdValue::U16(field_attributes.id.try_into().unwrap()),
@@ -167,7 +167,7 @@ fn static_struct_read(
 		.map(|(field_index, field)| {
 			let field_ident = field.ident.as_ref().unwrap();
 			let field_ty = &field.ty;
-			let field_attributes = field_attributes(&field)?;
+			let field_attributes = field_attributes(field)?;
 			let previous_size_exprs = size_exprs.iter().take(field_index);
 			if field_attributes.required {
 				let code = quote! {
@@ -226,7 +226,7 @@ fn dynamic_enum_read(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_ty = variant_ty(&variant)?;
+			let variant_ty = variant_ty(variant)?;
 			let code = quote! {
 				#variant_ident(buffalo::VariantReader<'a, <#variant_ty as buffalo::ReadType<'a>>::ReadType>),
 			};
@@ -244,7 +244,7 @@ fn dynamic_enum_read(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_attributes = variant_attributes(&variant)?;
+			let variant_attributes = variant_attributes(variant)?;
 			let variant_id = discriminant_type.value(variant_attributes.id);
 			let code = quote! {
 				#variant_id => {
@@ -281,7 +281,7 @@ fn dynamic_enum_read(
 			let variant_ident = &variant.ident;
 			let accessor_fn_name =
 				format_ident!("as_{}", variant_ident.to_string().to_snake_case());
-			let variant_ty = variant_ty(&variant)?;
+			let variant_ty = variant_ty(variant)?;
 			let code = quote! {
 				#visibility fn #accessor_fn_name(self) -> Option<<<#variant_ty as buffalo::ReadType<'a>>::ReadType as buffalo::Read<'a>>::Output> {
 					match self {
@@ -334,7 +334,7 @@ fn static_enum_read(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_ty = variant_ty(&variant)?;
+			let variant_ty = variant_ty(variant)?;
 			let code = quote! {
 				#variant_ident(buffalo::VariantReader<'a, <#variant_ty as buffalo::ReadType<'a>>::ReadType>),
 			};
@@ -358,7 +358,7 @@ fn static_enum_read(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_attributes = variant_attributes(&variant)?;
+			let variant_attributes = variant_attributes(variant)?;
 			let variant_id = discriminant_type.value(variant_attributes.id);
 			let code = quote! {
 				#variant_id => {
@@ -395,7 +395,7 @@ fn static_enum_read(
 			let variant_ident = &variant.ident;
 			let accessor_fn_name =
 				format_ident!("as_{}", variant_ident.to_string().to_snake_case());
-			let variant_ty = variant_ty(&variant)?;
+			let variant_ty = variant_ty(variant)?;
 			let code = quote! {
 				#visibility fn #accessor_fn_name(self) -> Option<<<#variant_ty as buffalo::ReadType<'a>>::ReadType as buffalo::Read<'a>>::Output> {
 					match self {

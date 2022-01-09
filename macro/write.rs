@@ -41,7 +41,7 @@ fn enum_write(
 	input: &syn::DeriveInput,
 	data: &syn::DataEnum,
 ) -> syn::Result<proc_macro2::TokenStream> {
-	let attributes = enum_attributes(&input)?;
+	let attributes = enum_attributes(input)?;
 	match attributes.size {
 		EnumSize::Dynamic => dynamic_enum_write(input, &attributes, data),
 		EnumSize::Static => static_enum_write(input, &attributes, data),
@@ -87,7 +87,7 @@ fn static_struct_write(
 		.fields
 		.iter()
 		.map(|field| {
-			let field_attributes = field_attributes(&field)?;
+			let field_attributes = field_attributes(field)?;
 			let field_id = field_attributes.id;
 			Ok((field_id, field))
 		})
@@ -142,7 +142,7 @@ fn dynamic_enum_write(
 			if matches!(variant.fields, syn::Fields::Unit) {
 				Ok(quote!(#variant_ident))
 			} else {
-				let variant_ty = variant_ty(&variant)?;
+				let variant_ty = variant_ty(variant)?;
 				Ok(quote!(#variant_ident(<#variant_ty as buffalo::WriteType>::WriteType)))
 			}
 		})
@@ -157,7 +157,7 @@ fn dynamic_enum_write(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_attributes = variant_attributes(&variant)?;
+			let variant_attributes = variant_attributes(variant)?;
 			let variant_id = discriminant_type.value(variant_attributes.id);
 			if matches!(variant.fields, syn::Fields::Unit) {
 				let code = quote! {
@@ -242,7 +242,7 @@ fn dynamic_struct_write(
 		.fields
 		.iter()
 		.map(|field| {
-			let field_attributes = field_attributes(&field)?;
+			let field_attributes = field_attributes(field)?;
 			let field_id = field_attributes.id;
 			Ok((field_id, field))
 		})
@@ -330,7 +330,7 @@ fn static_enum_write(
 			if matches!(variant.fields, syn::Fields::Unit) {
 				Ok(quote!(#variant_ident))
 			} else {
-				let variant_ty = variant_ty(&variant)?;
+				let variant_ty = variant_ty(variant)?;
 				Ok(quote!(#variant_ident(<#variant_ty as buffalo::WriteType>::WriteType)))
 			}
 		})
@@ -351,7 +351,7 @@ fn static_enum_write(
 		.iter()
 		.map(|variant| {
 			let variant_ident = &variant.ident;
-			let variant_attributes = variant_attributes(&variant)?;
+			let variant_attributes = variant_attributes(variant)?;
 			let variant_ty = variant_ty(variant)?;
 			let variant_id = discriminant_type.value(variant_attributes.id);
 			if matches!(variant.fields, syn::Fields::Unit) {
