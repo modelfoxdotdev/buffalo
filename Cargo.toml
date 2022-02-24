@@ -19,13 +19,9 @@ version = "0.3.1"
 [lib]
 path = "lib.rs"
 
-[features]
-ndarray_0_15 = ["ndarray"]
-
 [dependencies]
 bitvec = { version = "1", optional = true }
+buffalo_macro = { version = "0.1", path = "macro" }
 derive_deref = "1"
 ndarray = { version = "0.15", optional = true }
 num = "0.4"
-#num-bigint-dig = {version = "0.7", features = [ "i128" ] }
-buffalo_macro = { version = "0.1", path = "macro" }
