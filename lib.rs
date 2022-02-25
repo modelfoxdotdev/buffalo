@@ -5,7 +5,7 @@ mod bitvec;
 mod dynamic_struct_index_reader;
 mod dynamic_struct_index_writer;
 mod dynamic_struct_reader;
-#[cfg(feature = "ndarray_0_15")]
+#[cfg(feature = "ndarray")]
 mod ndarray;
 mod pointer;
 mod position;
