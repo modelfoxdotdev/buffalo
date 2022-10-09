@@ -3,25 +3,36 @@ members = [
   "macro"
 ]
 
-[package]
+[workspace.package]
 authors = ["Tangram <root@tangram.dev"]
-description = "Serialization library for Rust."
+description = "Buffalo is a binary serialization format that gives you ultimate control."
 documentation = "https://docs.rs/buffalo"
 edition = "2021"
 homepage = "https://github.com/tangramdotdev/buffalo"
 license = "MIT"
-name = "buffalo"
 publish = true
 repository = "https://github.com/tangramdotdev/buffalo"
-rust-version = "1.57"
 version = "0.4.1"
+
+[package]
+name = "buffalo"
+
+authors = { workspace = true }
+description = { workspace = true }
+documentation = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+version = { workspace = true }
 
 [lib]
 path = "lib.rs"
 
 [dependencies]
 bitvec = { version = "1", optional = true }
-buffalo_macro = { version = "0.1", path = "macro" }
+buffalo_macro = { version = "0.4", path = "macro" }
 derive_deref = "1"
 ndarray = { version = "0.15", optional = true }
 num = "0.4"

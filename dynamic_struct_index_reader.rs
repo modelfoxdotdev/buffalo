@@ -54,11 +54,11 @@ where
 	}
 }
 
-/// A `DynamicStructIndexPointer` points from a struct to its written vtable.
+/// A `DynamicStructIndexPointer` points from a struct to its index.
 #[derive(Debug, Deref, Clone, Copy)]
 pub struct DynamicStructIndexPointer(pub PointerType);
 
-// A `DynamicStructIndexFieldCount` holds the number of fields in a vtable.
+// A `DynamicStructIndexFieldCount` holds the number of fields in a struct's index.
 #[derive(Debug, Deref, Clone, Copy)]
 pub struct DynamicStructIndexFieldCount<I>(pub I)
 where
@@ -76,7 +76,7 @@ pub struct DynamicStructIndexFieldId<I>(pub I)
 where
 	I: DynamicStructIndexType;
 
-impl<'a> StaticSize for DynamicStructIndexPointer {
+impl StaticSize for DynamicStructIndexPointer {
 	const STATIC_SIZE: PointerType = size_of::<PointerType>() as PointerType;
 }
 
@@ -94,7 +94,7 @@ impl Write for DynamicStructIndexPointer {
 	}
 }
 
-impl<'a, I> StaticSize for DynamicStructIndexFieldCount<I>
+impl<I> StaticSize for DynamicStructIndexFieldCount<I>
 where
 	I: DynamicStructIndexType,
 {
@@ -121,7 +121,7 @@ where
 	}
 }
 
-impl<'a, I> StaticSize for DynamicStructIndexFieldOffset<I>
+impl<I> StaticSize for DynamicStructIndexFieldOffset<I>
 where
 	I: DynamicStructIndexType,
 {

@@ -137,7 +137,7 @@ where
 	type WriteType = Option<T::WriteType>;
 }
 
-impl<'a, T> StaticSize for Option<T>
+impl<T> StaticSize for Option<T>
 where
 	T: StaticSize,
 {

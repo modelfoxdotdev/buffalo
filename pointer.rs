@@ -25,7 +25,7 @@ where
 	}
 }
 
-impl<'a, T> StaticSize for Pointer<T>
+impl<T> StaticSize for Pointer<T>
 where
 	T: ?Sized,
 {

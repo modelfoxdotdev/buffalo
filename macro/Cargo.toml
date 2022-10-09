@@ -1,14 +1,15 @@
 [package]
-authors = ["Tangram <root@tangram.dev"]
-description = "Serialization library for Rust."
-documentation = "https://docs.rs/buffalo"
-edition = "2018"
-homepage = "https://github.com/tangramdotdev/buffalo"
-license = "MIT"
 name = "buffalo_macro"
-publish = true
-repository = "https://github.com/tangramdotdev/buffalo"
-version = "0.1.0"
+
+authors = { workspace = true }
+description = { workspace = true }
+documentation = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+repository = { workspace = true }
+version = { workspace = true }
 
 [lib]
 path = "lib.rs"
